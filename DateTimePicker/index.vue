@@ -1,3 +1,4 @@
+<pre>
 <template>
 	<el-date-picker
     v-model="dateValue"
@@ -149,3 +150,4 @@ export default {
   }
 } 
 </script>
+</pre>
