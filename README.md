@@ -49,9 +49,11 @@ formatter | 内容格式化 | Function | 否 | -
 如需在每一行单独增加操作按钮，需要在组件内使用模板插值
 示例：
 
-    <template slot="handle-column">
-        <el-table-column slot-scope="scope" label="操作">
-            <el-button type="primary">操作每一行</el-button>
-        </el-table-column>
-    </template>
+    <custom-table :tableOptions="tableOptions">
+        <template slot="handle-column">
+            <el-table-column slot-scope="scope" label="操作">
+                <el-button type="primary">操作每一行</el-button>
+            </el-table-column>
+        </template>
+     </custom-table>
 
