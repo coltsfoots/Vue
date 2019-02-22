@@ -3,6 +3,39 @@ Vue相关
 
 # 更新几个自己简单封装的组件，基于Element-UI
 
+## Form-Table-Pagination
+
+用下面三个组件组合成一个组件，不影响其他三个组件单独使用
+
+### 使用
+直接复制代码到项目中，然后导入，即可使用
+
+示例：
+
+    import FormTablePagination from '@/components/FormTablePagination'
+    <template>
+        <form-table-pagination :config="config"></form-table-pagination>
+    </template>
+    <script>
+        export default {
+            components: {
+                FormTablePagination
+            }
+        }
+    </script>
+    
+#### 参数说明
+
+config 为组件配置对象，具体配置如下：
+
+> config参数配置
+
+参数 | 说明 | 参数类型 | 是否必填 | 默认值
+--------- | --------- | --------- | --------- | ---------
+formOptions | 表单元素配置选项，详细配置参考 form 配置 | Object | 是 | -
+tableOptions | 表格配置选项，详细配置参考 table 配置 | Object | 是 | - 
+page | 分页配置选项，详细配置参考 pagination 配置 | Object | 是 | -
+
 ## 表格
 
 ### 使用
@@ -175,39 +208,6 @@ nextText | 下一页按钮显示文字 | String | 否 | 下一页
     <pagination @currentChange="eventName"></pagination>
     
 eventName 为你自己定义的事件名字
-
-## Form-Table-Pagination
-
-用上面三个组件组合成一个组件，不影响其他三个组件单独使用
-
-### 使用
-直接复制代码到项目中，然后导入，即可使用
-
-示例：
-
-    import FormTablePagination from '@/components/FormTablePagination'
-    <template>
-        <form-table-pagination :config="config"></form-table-pagination>
-    </template>
-    <script>
-        export default {
-            components: {
-                FormTablePagination
-            }
-        }
-    </script>
-    
-#### 参数说明
-
-config 为组件配置对象，具体配置如下：
-
-> config参数配置
-
-参数 | 说明 | 参数类型 | 是否必填 | 默认值
---------- | --------- | --------- | --------- | ---------
-formOptions | 表单元素配置选项，详细配置参考 form 配置 | Object | 是 | -
-tableOptions | 表格配置选项，详细配置参考 table 配置 | Object | 是 | - 
-page | 分页配置选项，详细配置参考 pagination 配置 | Object | 是 | -
 
 
 
