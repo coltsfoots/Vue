@@ -3,6 +3,39 @@ Vue相关
 
 # 更新几个自己简单封装的组件，基于Element-UI
 
+## Form-Table-Pagination
+
+用下面三个组件组合成一个组件，不影响其他三个组件单独使用
+
+### 使用
+直接复制代码到项目中，然后导入，即可使用
+
+示例：
+
+    import FormTablePagination from '@/components/FormTablePagination'
+    <template>
+        <form-table-pagination :config="config"></form-table-pagination>
+    </template>
+    <script>
+        export default {
+            components: {
+                FormTablePagination
+            }
+        }
+    </script>
+    
+#### 参数说明
+
+config 为组件配置对象，具体配置如下：
+
+> config参数配置
+
+参数 | 说明 | 参数类型 | 是否必填 | 默认值
+--------- | --------- | --------- | --------- | ---------
+formOptions | 表单元素配置选项，详细配置参考 form 配置 | Object | 是 | -
+tableOptions | 表格配置选项，详细配置参考 table 配置 | Object | 是 | - 
+page | 分页配置选项，详细配置参考 pagination 配置 | Object | 是 | -
+
 ## 表格
 
 ### 使用
@@ -14,6 +47,13 @@ Vue相关
     <template>
         <custom-talbe :tableOptions="tableOptions"></custom-table>
     </template>
+    <script>
+        export default {
+            components: {
+                CustomTable
+            }
+        }
+    </script>
     
 #### 参数说明
 
@@ -33,7 +73,7 @@ border | 表格是否有边框 | Boolean | 否 | true
 size | 表格尺寸 | String | 否 | small
 highlightCurrentRow | 是否高亮当前行 | Boolean | 否 | false
 showSummary | 是否有合计行 | Boolean | 否 | false
-handleSelectionChange | 表格选择项发生变化时挑用的方法(仅对含有选择框的表格生效) | Function | 否 | -
+commitSelectionChange | 选择框表格在选择项发生改变时调用的方法(接收被选择项的数据) | Function | 否 | -
 
 > columns参数配置
 
@@ -56,6 +96,24 @@ formatter | 内容格式化 | Function | 否 | -
             </el-table-column>
         </template>
      </custom-table>
+     
+ 监听含有选择框表格的勾选事件，需要在父组件定义自定义事件：
+ 
+    <custom-table
+	    @commitSelectionChange="commitSelectionChange"
+        :tableOptions="tableOptions"
+	>
+    </custom-table> 
+    <script>
+    export default {
+        methods: {
+            // 方法接收一个数组(被勾选的当前行)
+            commitSelectionChange(selectionArr){
+                console.log(selectionArr)
+            }
+        }
+    }
+    </script>
 
 ## 表单
 
@@ -68,6 +126,13 @@ formatter | 内容格式化 | Function | 否 | -
     <template>
         <custom-form :formOptions="formOptions"></custom-form>
     </template>
+    <script>
+        export default {
+            components: {
+                CustomForm
+            }
+        }
+    </script>
     
 #### 参数说明
 
@@ -102,3 +167,75 @@ disabled | 是否禁用元素 | Boolean | 否 | false
 readonly | 是否只读 | Boolean | 否 | false
 options | 下拉框选项配置 | Array | 是 | -
 pickerOptions | 日期范围快捷选项 | Object | 否 | 只有在类型为 daterange 的时候才有效
+
+## 分页
+
+### 使用
+直接复制代码到项目中，然后导入，即可使用
+
+示例：
+
+    import Pagination from '@/components/Pagination'
+    <template>
+        <pagination :page="page"></pagination>
+    </template>
+    <script>
+        export default {
+            components: {
+                Pagination
+            }
+        }
+    </script>
+    
+#### 参数说明
+
+page 为分页组件配置对象，具体配置如下：
+
+> page参数配置
+
+参数 | 说明 | 参数类型 | 是否必填 | 默认值
+--------- | --------- | --------- | --------- | ---------
+small | 表格尺寸大小 | String | 否 | -
+pageIndex | 当前页 | Number | 是 | 1
+pageSize | 每一页展示条数 | Number | 是 | 20
+totalPage | 总条数 | Number | 否 | -
+pageSizes | 规定每页展示条数 | Array | 否 | [20, 50, 100, 150, 200]
+prevText | 上一页按钮显示文字 | String | 否 | 上一页
+nextText | 下一页按钮显示文字 | String | 否 | 下一页
+
+若要监听当前页改变、或者每页展示条数改变事件，需要在父组件定义监听事件
+
+    <pagination @currentChange="eventName"></pagination>
+    
+eventName 为你自己定义的事件名字
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
