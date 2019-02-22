@@ -3,7 +3,7 @@ Vue相关
 
 # 更新几个自己简单封装的组件，基于Element-UI
 
-> 表格
+## 表格
 
 ### 使用
 直接复制代码到项目中，然后导入，即可使用
@@ -56,4 +56,62 @@ formatter | 内容格式化 | Function | 否 | -
             </el-table-column>
         </template>
      </custom-table>
+
+## 表单
+
+### 使用
+直接复制代码到项目中，然后导入，即可使用
+
+示例：
+
+    import CustomForm from '@/components/CustomForm'
+    <template>
+        <custom-form :formOptions="formOptions"></custom-form>
+    </template>
+    
+#### 参数说明
+
+formOptions 为组件配置对象，详细配置如下：
+
+> form参数配置
+
+参数 | 说明 | 参数类型 | 是否必填 | 默认值
+--------- | --------- | --------- | --------- | ---------
+formName | 表单名 | String | 是 | -
+showResthBtn | 是否显示重置按钮 | Boolean | 否 | -
+handleSubmit | 表单提交回调方法(接受表单数据对象为参数) | Function | 否 | -
+inline | 表单布局方式 | Boolean | 否 | false
+rules | 表单验证规则 | Object | 否 | -
+labelPosition | 表单对齐方式 | String | 否 | -
+labelWidth | 表单字段说明宽度 | String,Number | 否 | true
+inlineMessage | 是否在同一行展示验证信息 | Boolean | 否 | -
+size | 表单元素尺寸 | String | 否 | -
+forms | 表单元素配置对象(详情配置如下) | Object | 是 | -
+
+> forms参数配置
+
+参数 | 说明 | 参数类型 | 是否必填 | 默认值
+--------- | --------- | --------- | --------- | ---------
+itemType | 表单元素类型 | String | 是 | input(目前只接受4种类型 input select date daterange)
+prop | 表单元素字段名 | String | 是 | -
+label | 元素说明 | String | 否 | -
+itemWidth | 元素宽度 | String,Number | 否 | -
+size | 元素尺寸 | String | 否 | -
+placeholder | 占位符 | String | 否 | -
+disabled | 是否禁用元素 | Boolean | 否 | false
+readonly | 是否只读 | Boolean | 否 | false
+options | 下拉框选项配置 | Array | 是 | -
+pickerOptions 日期范围快捷选项 | Object | 否 | 只有在类型为 daterange 的时候才有效
+
+
+
+
+
+
+
+
+
+
+
+
 
