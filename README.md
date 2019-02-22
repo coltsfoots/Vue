@@ -33,7 +33,7 @@ border | 表格是否有边框 | Boolean | 否 | true
 size | 表格尺寸 | String | 否 | small
 highlightCurrentRow | 是否高亮当前行 | Boolean | 否 | false
 showSummary | 是否有合计行 | Boolean | 否 | false
-handleSelectionChange | 表格选择项发生变化时挑用的方法(仅对含有选择框的表格生效) | Function | -
+handleSelectionChange | 表格选择项发生变化时挑用的方法(仅对含有选择框的表格生效) | Function | 否 | -
 
 > columns参数配置
 
