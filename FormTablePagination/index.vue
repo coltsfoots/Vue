@@ -5,7 +5,7 @@
 			<custom-table
         :tableOptions="config.tableOptions"
         @commitSelectionChange="commitSelectionChange"
-      > 
+      >      
         <!-- 操作列 -->
         <template slot="handle-column">
           <slot name="handle-column"></slot>
