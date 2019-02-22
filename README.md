@@ -7,5 +7,6 @@ Vue相关
 
 ### 使用
 直接复制代码到项目中，然后导入.
+
   import CustomTable from '@/components/CustomTable'
 
