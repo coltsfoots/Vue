@@ -14,6 +14,13 @@ Vue相关
     <template>
         <custom-talbe :tableOptions="tableOptions"></custom-table>
     </template>
+    <script>
+        export default {
+            components: {
+                CustomTable
+            }
+        }
+    </script>
     
 #### 参数说明
 
@@ -68,6 +75,13 @@ formatter | 内容格式化 | Function | 否 | -
     <template>
         <custom-form :formOptions="formOptions"></custom-form>
     </template>
+    <script>
+        export default {
+            components: {
+                CustomForm
+            }
+        }
+    </script>
     
 #### 参数说明
 
@@ -102,3 +116,60 @@ disabled | 是否禁用元素 | Boolean | 否 | false
 readonly | 是否只读 | Boolean | 否 | false
 options | 下拉框选项配置 | Array | 是 | -
 pickerOptions | 日期范围快捷选项 | Object | 否 | 只有在类型为 daterange 的时候才有效
+
+## 分页
+
+### 使用
+直接复制代码到项目中，然后导入，即可使用
+
+示例：
+
+    import Pagination from '@/components/Pagination'
+    <template>
+        <pagination :page="page"></pagination>
+    </template>
+    <script>
+        export default {
+            components: {
+                Pagination
+            }
+        }
+    </script>
+    
+#### 参数说明
+
+page 为分页组件配置对象，具体配置如下：
+
+> page参数配置
+
+参数 | 说明 | 参数类型 | 是否必填 | 默认值
+--------- | --------- | --------- | --------- | ---------
+small | 表格尺寸大小 | String | 否 | -
+pageIndex | 当前页 | Number | 是 | 1
+pageSize | 每一页展示条数 | Number | 是 | 20
+totalPage | 总条数 | Number | 否 | -
+pageSizes | 规定每页展示条数 | Array | 否 | [20, 50, 100, 150, 200]
+prevText | 上一页按钮显示文字 | String | 否 | 上一页
+nextText | 下一页按钮显示文字 | String | 否 | 下一页
+
+若要监听当前页改变、或者每页展示条数改变事件，需要在父组件定义监听事件
+
+    <pagination @currentChange="eventName"></pagination>
+    
+eventName 为你自己定义的事件名字
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
