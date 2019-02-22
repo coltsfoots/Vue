@@ -1,9 +1,10 @@
 export const formOptions = {
   formName: {
     type: String,
-    required: true
+    required: true,
+    validate: validateFormName
   },
-  showResthBtn: Boolean,
+  showResetBtn: Boolean,
   handleSubmit: Function,
   inline: {
     type: Boolean,
@@ -61,5 +62,14 @@ function validateSize(value) {
     throw new Error(`Size is must be one of ['large', 'small', 'mini']`)
   } else {
     return valid
+  }
+}
+
+function validateFormName(value) {
+  const formNameType = typeof value
+  if (formNameType !== 'string' || value === '' || value === undefined) {
+    throw new Error(`formName is required`)
+  } else {
+    return true
   }
 }
