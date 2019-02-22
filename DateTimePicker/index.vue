@@ -147,5 +147,5 @@ export default {
       this.$emit('handleChangeDate', val)
     }
   }
-}
+} 
 </script>
