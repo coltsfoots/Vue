@@ -101,17 +101,4 @@ placeholder | 占位符 | String | 否 | -
 disabled | 是否禁用元素 | Boolean | 否 | false
 readonly | 是否只读 | Boolean | 否 | false
 options | 下拉框选项配置 | Array | 是 | -
-pickerOptions 日期范围快捷选项 | Object | 否 | 只有在类型为 daterange 的时候才有效
-
-
-
-
-
-
-
-
-
-
-
-
-
+pickerOptions | 日期范围快捷选项 | Object | 否 | 只有在类型为 daterange 的时候才有效
