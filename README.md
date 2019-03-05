@@ -240,6 +240,12 @@ type 为日期选择器类型，支持element-ui所有类型，isWithShortcut �
 type | 日期类型 | String | 是 | date
 isWithShortcut | 是否带快捷方式 | Boolean | 否 | false
 
+监听日期发生改变的值需要在父组件定义事件
+
+    <date-time-picker @handleChangeDate="eventName"></date-time-picker>
+    
+eventName 为自定义事件名
+
 	
 
 
