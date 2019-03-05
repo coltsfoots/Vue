@@ -210,6 +210,37 @@ nextText | 下一页按钮显示文字 | String | 否 | 下一页
     
 eventName 为你自己定义的事件名字
 
+## 日期选择器
+
+### 使用
+直接复制代码到项目中，然后导入，即可使用
+
+示例：
+    import DateTimePicker from '@/comoponents/DateTimePicker'
+    <template>
+		<date-time-picker :type="type" :isWithShortcut="isWithShortcut"></date-time-picker>
+	</template>
+	<script>
+		export default {
+			components: {
+				DateTimePicker
+			}
+	    }
+    </script>
+	
+### 参数说明
+
+type 为日期选择器类型，支持element-ui所有类型，isWithShortcut 为是否带快捷方式
+
+>参数配置
+
+参数 | 说明 | 参数类型 | 是否必填 | 默认值
+--------- | --------- | --------- | --------- | ---------
+type | 日期类型 | String | 是 | date
+isWithShortcut | 是否带快捷方式 | Boolean | 否 | false
+
+	
+
 
 
 
