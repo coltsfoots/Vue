@@ -1,5 +1,6 @@
 # Vue
 Vue相关
+emmm不知道为嘛不能格式化代码，等我研究好了再格式化吧o(╥﹏╥)o
 
 # 更新几个自己简单封装的组件，基于Element-UI
 
@@ -86,7 +87,7 @@ fixed | 是否固定 | String,Boolean | 否 | -
 formatter | 内容格式化 | Function | 否 | -
 
 > 表格操作栏
-如需在每一行单独增加操作按钮，需要在组件内使用模板插值
+如需在每一行单独增加操作按钮，需要在组件内使用插槽
 示例：
 
     <custom-table :tableOptions="tableOptions">
@@ -208,6 +209,44 @@ nextText | 下一页按钮显示文字 | String | 否 | 下一页
     <pagination @currentChange="eventName"></pagination>
     
 eventName 为你自己定义的事件名字
+
+## 日期选择器
+
+### 使用
+直接复制代码到项目中，然后导入，即可使用
+
+示例：
+
+    import DateTimePicker from '@/comoponents/DateTimePicker'
+    <template>
+		<date-time-picker :type="type" :isWithShortcut="isWithShortcut"></date-time-picker>
+	</template>
+	<script>
+		export default {
+			components: {
+				DateTimePicker
+			}
+	    }
+    </script>
+	
+### 参数说明
+
+type 为日期选择器类型，支持element-ui所有类型，isWithShortcut 为是否带快捷方式
+
+>参数配置
+
+参数 | 说明 | 参数类型 | 是否必填 | 默认值
+--------- | --------- | --------- | --------- | ---------
+type | 日期类型 | String | 是 | date
+isWithShortcut | 是否带快捷方式 | Boolean | 否 | false
+
+监听日期发生改变的值需要在父组件定义事件
+
+    <date-time-picker @handleChangeDate="eventName"></date-time-picker>
+    
+eventName 为自定义事件名
+
+	
 
 
 
