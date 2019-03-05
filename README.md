@@ -216,6 +216,7 @@ eventName 为你自己定义的事件名字
 直接复制代码到项目中，然后导入，即可使用
 
 示例：
+
     import DateTimePicker from '@/comoponents/DateTimePicker'
     <template>
 		<date-time-picker :type="type" :isWithShortcut="isWithShortcut"></date-time-picker>
