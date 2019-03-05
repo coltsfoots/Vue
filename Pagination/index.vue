@@ -47,13 +47,9 @@ export default {
       }
     }
   },
-  created() {
-    console.log(this)
-  },
   methods: {
     currentChangeHandle(curr) {
       this.page.pageIndex = curr
-      console.log(curr)
       this.$emit('currentChange')
     },
     sizeChangeHandle(size) {

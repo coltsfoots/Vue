@@ -11,7 +11,7 @@ export const formOptions = {
     default: false
   },
   rules: {
-    type: Array,
+    type: Object,
     default: () => {}
   },
   labelPosition: String,

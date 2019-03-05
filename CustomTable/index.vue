@@ -17,15 +17,17 @@
 				v-if="tableOptions.hasSelection"
 				type="selection"
 				width="55"
-				resizable=""
+				:fixed="hasFixed"
+				resizable
 			></el-table-column>
 
 			<!-- 序号 -->
 			<el-table-column
 				v-if="tableOptions.hasIndex"
 				type="index"
-				resizable=""
 				width="55"
+				:fixed="hasFixed"
+				resizable
 			>
 				<template slot="header" slot-scope="scope">
 					<span>序号</span>
@@ -57,6 +59,19 @@ export default {
   props: {
     tableOptions: Object,
     default: () => tableOptions
+  },
+  computed: {
+    hasFixed() {
+      const { columns } = this.tableOptions
+      const fixed = columns.some(item => {
+        if (item.fixed) {
+          return true
+        } else {
+          return false
+        }
+      })
+      return fixed
+    }
   },
   methods: {
     handleSelectionChange(item) {
