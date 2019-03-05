@@ -87,7 +87,7 @@ fixed | 是否固定 | String,Boolean | 否 | -
 formatter | 内容格式化 | Function | 否 | -
 
 > 表格操作栏
-如需在每一行单独增加操作按钮，需要在组件内使用模板插值
+如需在每一行单独增加操作按钮，需要在组件内使用插槽
 示例：
 
     <custom-table :tableOptions="tableOptions">
