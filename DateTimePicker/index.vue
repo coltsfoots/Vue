@@ -8,10 +8,14 @@
     size="small"
 		:placeholder="placeholder"
 		:format="formatValueType"
+    :value-format="isWithTime"
 		:type="type"
-		:value-format="isWithTime"
-		:isWithShortcut="isWithShortcut"
-		:picker-options="shortcuts"
+    :hasShortcuts="hasShortcuts"
+		:picker-options="pickerOptions ? pickerOptions : hasShortcuts ? defaultPickerOptions : {}"
+    :readonly="readonly"
+    :disabled="disabled"
+    :default-value="defaultValue ? defaultValue : ''"
+    :default-time="defaultTime ? defaultTime : ''"
 		@change="changeHandle"
 	>
 	</el-date-picker>
@@ -25,14 +29,82 @@ export default {
       type: String,
       default: ''
     },
-    isWithShortcut: {
+    // 是否开启快捷方式
+    hasShortcuts: {
       type: Boolean,
       default: false
-    }
+    },
+    pickerOptions: Object,
+    readonly: Boolean,
+    disabled: Boolean,
+    defaultValue: String,
+    defaultTime: String
   },
   data() {
+    let defaultPickerOptions = {}
+    if (this.type.indexOf('range') === -1) {
+      defaultPickerOptions = Object.assign(defaultPickerOptions, {
+        shortcuts: [
+          {
+            text: '今天',
+            onClick(vm) {
+              vm.$emit('pick', new Date())
+            }
+          },
+          {
+            text: '昨天',
+            onClick(vm) {
+              const date = new Date()
+              date.setTime(date.getTime() - 3600 * 1000 * 24)
+              vm.$emit('pick', date)
+            }
+          },
+          {
+            text: '一周前',
+            onClick(vm) {
+              const date = new Date()
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
+              vm.$emit('pick', date)
+            }
+          }
+        ]
+      })
+    } else if (this.type.indexOf('range') !== -1) {
+      defaultPickerOptions = Object.assign(defaultPickerOptions, {
+        shortcuts: [
+          {
+            text: '最近一周',
+            onClick(vm) {
+              const start = new Date()
+              const end = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+              vm.$emit('pick', [start, end])
+            }
+          },
+          {
+            text: '最近一个月',
+            onClick(vm) {
+              const start = new Date()
+              const end = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+              vm.$emit('pick', [start, end])
+            }
+          },
+          {
+            text: '最近三个月',
+            onClick(vm) {
+              const start = new Date()
+              const end = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30 * 3)
+              vm.$emit('pick', [start, end])
+            }
+          }
+        ]
+      })
+    }
     return {
-      dateValue: ''
+      dateValue: '',
+      defaultPickerOptions
     }
   },
   computed: {
@@ -86,66 +158,15 @@ export default {
       } else {
         return '选择日期'
       }
-    },
-    shortcuts() {
-      if (this.$props.isWithShortcut && this.$props.type.indexOf('range') === -1) {
-        return {
-          shortcuts: [{
-            text: '今天',
-            onClick(picker) {
-              picker.$emit('pick', new Date())
-            }
-          }, {
-            text: '昨天',
-            onClick(picker) {
-              const date = new Date()
-              date.setTime(date.getTime() - 3600 * 1000 * 24)
-              picker.$emit('pick', date)
-            }
-          }, {
-            text: '一周前',
-            onClick(picker) {
-              const date = new Date()
-              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
-              picker.$emit('pick', date)
-            }
-          }]
-        }
-      } else if (this.$props.isWithShortcut && this.$props.type.indexOf('range') !== -1) {
-        return {
-          shortcuts: [{
-            text: '最近一周',
-            onClick(picker) {
-              const start = new Date()
-              const end = new Date()
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
-              picker.$emit('pick', [start, end])
-            }
-          }, {
-            text: '最近一个月',
-            onClick(picker) {
-              const start = new Date()
-              const end = new Date()
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
-              picker.$emit('pick', [start, end])
-            }
-          }, {
-            text: '最近三个月',
-            onClick(picker) {
-              const start = new Date()
-              const end = new Date()
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
-              picker.$emit('pick', [start, end])
-            }
-          }]
-        }
-      }
     }
   },
   methods: {
     changeHandle(val) {
       this.$emit('handleChangeDate', val)
     }
+  },
+  created() {
+    console.log(this)
   }
 }
 </script>

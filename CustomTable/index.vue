@@ -4,7 +4,7 @@
 			:tableOptions="tableOptions"
 			:data="tableOptions.dataSource"
 			:columns="tableOptions.columns"
-			:max-height="tableOptions.maxHeight || '520'"
+			:max-height="tableOptions.maxHeight || '525'"
 			:stripe="tableOptions.stripe"
 			:border="tableOptions.border ? tableOptions.border: true"
 			:size="tableOptions.size ? tableOptions.size : 'small'"
@@ -29,7 +29,7 @@
 				:fixed="hasFixed"
 				resizable
 			>
-				<template slot="header" slot-scope="scope">
+				<template slot="header">
 					<span>序号</span>
 				</template>
 			</el-table-column>

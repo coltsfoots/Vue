@@ -113,27 +113,34 @@
 export default {
   name: 'TreeTransfer',
   props: {
+    // 宽度
     width: {
       type: String,
       default: '100%'
     },
+    // 高度
     height: {
       type: String,
       default: '320px'
     },
+    // 列表文字
     title: {
       type: Array,
       default: () => ['源列表', '目标列表']
     },
+    // 按钮文字
     buttonText: Array,
+    // 数据来源
     fromData: {
       type: Array,
       default: () => []
     },
+    // 选中数据
     toData: {
       type: Array,
       default: () => []
     },
+    // 配置选项
     defaultProps: {
       type: Object,
       default: () => {
@@ -148,23 +155,29 @@ export default {
       type: String,
       default: 'pid'
     },
+    // 是否只返回子节点
     leafOnly: {
       type: Boolean,
       default: false
     },
+    // 是否开启搜索功能
     filter: {
       type: Boolean,
       default: false
     },
+    // 是否展开所有节点
     openAll: {
       type: Boolean,
       default: false
     },
+    // 自定义节点数据函数
     renderContent: Function,
+    // 穿梭后是否展开节点
     transferOpenNode: {
       type: Boolean,
       default: true
     },
+    // 默认被选中节点(数据源)
     defaultCheckedKeys: {
       type: Array,
       default: () => []
@@ -173,6 +186,7 @@ export default {
       type: String,
       default: '输入关键字查询'
     },
+    // 默认穿梭一次默认选中数据
     defaultTransfer: {
       type: Boolean,
       default: false

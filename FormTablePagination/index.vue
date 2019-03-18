@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { config } from './baseConfig'
 import CustomForm from '@/components/CustomForm'
 import CustomTable from '@/components/CustomTable'
 import Pagination from '@/components/Pagination'
@@ -32,8 +31,7 @@ export default {
     Pagination
   },
   props: {
-    config: Object,
-    default: () => config
+    config: Object
   },
   data() {
     const { forms } = this.config.formOptions

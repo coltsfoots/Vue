@@ -4,13 +4,13 @@
 			background
       v-if="page.totalPage"
       :small="page.isSmall"
-      :current-page.sync="page.pageIndex"
-			:page-size='page.pageSize'
-			:total='page.totalPage'
+      :current-page.sync="page.pageIndex || 1"
+			:page-size='page.pageSize || 20'
+			:total='totalPage'
 			:page-sizes='page.pageSizes || [20, 50, 100, 150, 200]'
-      :prev-text='page.prevText || "上一页"'
-      :next-text='page.nextText || "下一页"'
-			layout='total, sizes, prev, pager, next, jumper'
+      :prev-text='page.prevText'
+      :next-text='page.nextText'
+			:layout='page.layout|| "prev, pager, next"'
       @current-change="currentChangeHandle"
       @size-change="sizeChangeHandle"
 		>
@@ -22,13 +22,7 @@
 export default {
   name: 'Pagination',
   props: {
-    page: {
-      type: Object,
-      default: () => ({
-        pageIndex: 1,
-        pageSize: 20
-      })
-    }
+    page: Object
   },
   computed: {
     totalPage() {
